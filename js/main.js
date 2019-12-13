@@ -62,7 +62,7 @@ angry.onclick = function() {
 
   
     moodis.push(["0", (dateOnly[0])])
-    console.log(moodis);
+    // console.log(moodis);
 }
 
 sad.onclick = function() {
@@ -72,7 +72,7 @@ sad.onclick = function() {
  
 
     moodis.push(["1", (dateOnly[0])])
-    console.log(moodis);
+    // console.log(moodis);
 }
 neutral.onclick = function() {
 
@@ -80,7 +80,7 @@ neutral.onclick = function() {
     var dateOnly =date.split(",");
 
     moodis.push(["2", (dateOnly[0])])
-    console.log(moodis);
+    // console.log(moodis);
 }
 happy.onclick = function() {
 
@@ -88,7 +88,7 @@ happy.onclick = function() {
     var dateOnly =date.split(",");
   
     moodis.push(["3", (dateOnly[0])])
-    console.log(moodis);
+    // console.log(moodis);
 }
 excited.onclick = function() {
 
@@ -96,7 +96,7 @@ excited.onclick = function() {
     var dateOnly =date.split(",");
    
     moodis.push(["4", (dateOnly[0])])
-    console.log(moodis);
+    // console.log(moodis);
 }
 
 var filechoose = document.getElementById("keychoose");
@@ -209,7 +209,7 @@ filechoose.onchange = function(e) {
       }    
     });
     state.loggedIn = true;
-    console.log(txids);
+    // console.log(txids);
   }
 
   async function getMood() {
@@ -249,7 +249,7 @@ filechoose.onchange = function(e) {
     savedMood = jsonObj;
 
     // console.log(savedMood);
-    // console.log(JSON.stringify(savedMood));
+	// console.log(JSON.stringify(savedMood);
 
     for (const mood in savedMood) {
         var savedMoods = [
@@ -379,6 +379,8 @@ filechoose.onchange = function(e) {
       transaction.addTag("Application-ID", "MoodTracker");
       transaction.addTag("Title", title);
 	  await arweave.transactions.sign(transaction, state.jwk);
+	  const response = await arweave.transactions.post(transaction);
+	  console.log(response);
 	  alert("Mood saved to the Arweave, please allow some time for it to be mined");
     } else {
       alert("You must be logged in to track your mood.");
